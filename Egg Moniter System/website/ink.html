@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Egg Monitoring</title>
+		<meta http-equiv="refresh" content="10">
+		<meta charset="utf-8">
+		<meta name="description" content="Egg Monitoring System">
+		<meta name="author" content="Mohan Sai">
+		<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,700" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<link rel="stylesheet" href="css/style.css">
+		<link rel="stylesheet" href="css/icomoon/style.css">
+		<link rel="stylesheet" href="css/ink.css" class="colors">
+	</head>
+
+
+	<body id="home">
+		<div align="center">
+  		<p id="msg"></p>
+		</div>
+		<div id="header">
+		<div class="header-content">
+			<p><font size="50" color="white" face="Comic sans MS"><center>Egg Moniter System</center></font></p>
+			<div class="countdown" id="countdown">
+				<div class="container">
+					  <div class="row">
+						<div class="countdown-item col-sm-4 col-xs-4">
+							<div class="countdown-number" id="countdown-days"></div>
+							<div class="countdown-label">Number of Eggs present in the Tray</div>
+						</div>
+/
+						<!--
+						<div class="countdown-item col-sm-3 col-xs-3">
+							<div class="countdown-number" id="countdown-seconds">44</div>
+							<div class="countdown-label">seconds</div>
+						</div>
+						-->
+
+					</div>
+
+			</div>
+
+		</div>
+
+
+
+		<script>
+
+var xmlhttp1 = new XMLHttpRequest();
+
+var url1 = "https://api.thingspeak.com/channels/610588/fields/1/last.json";
+
+xmlhttp1.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        var myArr = JSON.parse(this.responseText);
+        myFunction(myArr,1);
+    }
+};
+
+xmlhttp1.open("GET", url1, true);
+xmlhttp1.send();
+
+xmlhttp2.open("GET", url2, true);
+xmlhttp2.send();
+
+xmlhttp3.open("GET", url3, true);
+xmlhttp3.send();
+
+xmlhttp4.open("GET", url4, true);
+xmlhttp4.send();
+
+function myFunction(arr,n) {
+	if(n==1)
+    {document.getElementById("countdown-days").innerHTML = arr.field1;}
+	if(n==2)
+	{document.getElementById("countdown-hours").innerHTML = arr.field2;}
+	if(n==3)
+	{document.getElementById("countdown-minutes").innerHTML = arr.field3;}
+	if(n==4)
+	{document.getElementById("countdown-seconds").innerHTML = arr.field4;}
+
+    }
+
+</script>
+
+	</body>
+</html>
